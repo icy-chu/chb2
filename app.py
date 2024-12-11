@@ -3,7 +3,7 @@ from flask_cors import CORS
 import joblib
 import numpy as np
 import logging
-
+import os
 # 初始化 Flask 应用
 app = Flask(__name__)#__name__代表目前执行的模组
 CORS(app)
@@ -57,4 +57,6 @@ def home():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True, port=5001)
+    # 获取PORT环境变量并绑定
+    port = int(os.environ.get("PORT", 5000))  # 默认使用 5000，如果PORT环境变量未设置
+    app.run(host="0.0.0.0", port=port)
