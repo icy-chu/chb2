@@ -5,7 +5,7 @@ import numpy as np
 import logging
 import os
 # 初始化 Flask 应用
-app = Flask(__name__)#__name__代表目前执行的模组
+app = Flask(__name__, template_folder=os.path.join(os.getcwd(), 'your_templates_folder'))#__name__代表目前执行的模组
 CORS(app)
 
 # 配置日志
